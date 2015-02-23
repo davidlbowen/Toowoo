@@ -10,6 +10,9 @@ import UIKit
 
 class TweetViewController: UIViewController {
     
+    // This is not currently used. See TweetsViewController.prepareForSegue.
+    var tweet: Tweet?
+    
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userProfileImageView: UIImageView!
     @IBOutlet weak var tweetLabel: UILabel!

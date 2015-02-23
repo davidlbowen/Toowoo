@@ -81,18 +81,22 @@ class TweetsViewController: UIViewController, UITableViewDataSource, UITableView
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         Tweet.currentTweet = tweets[indexPath.row]
-        NSOperationQueue.mainQueue().addOperationWithBlock() {
-            () -> Void in
-            self.segueToTweetViewController()
-        }
-    }
-    
-    func segueToTweetViewController() {
         performSegueWithIdentifier("tweetSegue", sender: self)
     }
     
+    // This does not work.  Worked around it by using Tweet.currentTweet to pass the tweet instead.
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        println("Prepare for segue \(segue.identifier!)")
+        if "tweetSegue" == segue.identifier {
+            if let tweetVC = segue.destinationViewController as? TweetViewController {
+                println("Prepare for segue to TweetViewController")
+                let selectedRow = tweetTableView.indexPathForSelectedRow()!.row
+                tweetVC.tweet = tweets[selectedRow]
+            }
+            else {
+                println("Prepare for segue failed. What went wrong?")
+            }
+        }
     }
     
     /*
