@@ -1,7 +1,7 @@
 Twitter (raw)
 This is a basic twitter app to read and compose tweets the Twitter API.
 
-Time spent: <Number of hours spent>
+Time spent: 15 hours
 
 # Features
 
